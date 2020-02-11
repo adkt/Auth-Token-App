@@ -7,6 +7,7 @@
 const express = require("express");
 const app = express();
 var database = require("./database");
+var router = require("./router");
 
 database.init();
 
@@ -20,6 +21,8 @@ app.use(express.static("public"));
 app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
+
+router.init(app);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {

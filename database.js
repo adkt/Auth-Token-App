@@ -4,7 +4,7 @@ module.exports.init = function() {
   var Datastore = require('nedb')
   var db = new Datastore({ filename: 'data.db', autoload: true });
 
-  var databaseEntry = {user:'user2', pass:'test2'};
+  var databaseEntry = {user:'user', pass:'test'};
 
   /*
   db.insert(databaseEntry, function (err, newDoc) {
@@ -17,9 +17,8 @@ module.exports.init = function() {
   });
 */
   
-  db.find({ user: 'user2' }, function (err, docs) {
+  db.find({user: 'user'}, function (err, docs) {
     console.log(docs);
-    console.log('asd');
   });
 };
 
