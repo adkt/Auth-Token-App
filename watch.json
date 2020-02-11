@@ -8,10 +8,12 @@
   "restart": {
     "exclude": [
       "^public/",
-      "^dist/"
+      "^dist/",
+      "\\.js$"
     ],
     "include": [
+      "zrefresh.txt"
     ]
   },
-  "throttle": 1
+  "throttle": 10
 }
