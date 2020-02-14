@@ -1,5 +1,7 @@
-module.exports.init = function(app) {
+module.exports.init = function(app, db) {
   console.log("Starting Router");
+  
+  var auth = require("./auth/authInit");
   
   //require body-parser
   var bodyParser = require('body-parser');
@@ -7,8 +9,7 @@ module.exports.init = function(app) {
   app.use(bodyParser.urlencoded({ extended: true }));
   
   app.post('/login', function (req, res) {
-    console.log(req.body);
-    res.json(req.body);
+    auth.init(db, req.body.user, req.body.pass);
   })
   
 };

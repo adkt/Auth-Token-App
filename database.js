@@ -2,11 +2,11 @@ module.exports.init = function() {
   console.log("Starting Database");
   //Create Database
   var Datastore = require('nedb')
-  var db = new Datastore({ filename: 'data.db', autoload: true });
+  var db = new Datastore({ filename: '.data/data.db', autoload: true });
 
-  var databaseEntry = {user:'user', pass:'test'};
-
-  /*
+  var databaseEntry = {user: "user1", pass: "password"};
+  
+/*
   db.insert(databaseEntry, function (err, newDoc) {
     if (!err) {
       console.log('insert worked');
@@ -18,7 +18,9 @@ module.exports.init = function() {
 */
   
   db.find({user: 'user'}, function (err, docs) {
-    console.log(docs);
+    
   });
+  
+  return db;
 };
 

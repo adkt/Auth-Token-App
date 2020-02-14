@@ -9,7 +9,7 @@ const app = express();
 var database = require("./database");
 var router = require("./router");
 
-database.init();
+var db = database.init();
 
 // we've started you off with Express,
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -22,7 +22,7 @@ app.get("/", function(request, response) {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-router.init(app);
+router.init(app, db);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
