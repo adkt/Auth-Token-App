@@ -9,6 +9,7 @@ const app = express();
 var database = require("./database");
 var router = require("./router");
 
+// initialise database
 var db = database.init();
 
 // we've started you off with Express,
@@ -17,11 +18,7 @@ var db = database.init();
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function(request, response) {
-  response.sendFile(__dirname + "/views/index.html");
-});
-
+// register routes
 router.init(app, db);
 
 // listen for requests :)

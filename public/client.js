@@ -1,9 +1,14 @@
 // client-side js
-// run by the browser each time your view template is loaded
-
-var loginData = {user: "user1", pass: "password"};
+var indexLogin = $('#login').val('user1');
+var indexPass = $('#pass').val('password');
 
 $('#submit-login').on('click',function(){
+  // get fields
+  var indexLogin = $('#login').val();
+  var indexPass = $('#pass').val();
+  var loginData = {user: indexLogin, pass: indexPass};
+  
+  // make call to server
   $.ajax({
     url: "/login",
     type: "POST",
