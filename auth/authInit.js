@@ -1,12 +1,14 @@
+var util = require("../utilities");
+
 module.exports.init = function(db, user, pass) {
   return new Promise((resolve, reject) => {  
     // see if user and password match in db
     db.find({user: user, pass: pass}, function (err, docs) {
      if (docs.length == 1) {
-        console.log('username and password valid');
+        console.log(util.timestamp() + 'username and password valid');
         resolve("Success");
       } else if (err) {
-        console.log('auth/authInit/init ERROR 1: database Error: ' + err)
+        console.log(util.timestamp() + 'auth/authInit/init ERROR 1: database Error: ' + err)
         reject("Database Error Please contact Admin quoting 'auth/authInit/init ERROR 1'");
       } else {
         determineAuthError(user, pass).then(result => {
@@ -23,15 +25,15 @@ module.exports.init = function(db, user, pass) {
       db.find({user: user}, function (err, docs) {
         if (docs.length == 1) {
           // user found so must be a password error
-            console.log('auth/authInit/determineAuthError ERROR 2: password Error.')
+            console.log(util.timestamp() + 'auth/authInit/determineAuthError ERROR 2: password Error.')
             resolve("Incorrect Password");
         } else if (docs.length > 1) {
           // multiple users with same username
-          console.log('auth/authInit/determineAuthError ERROR 3: multiusername in Database.')
+          console.log(util.timestamp() + 'auth/authInit/determineAuthError ERROR 3: multiusername in Database.')
           resolve("Database Error Please contact Admin quoting 'auth/authInit/determineAuthError ERROR 3'");
         } else {
           // user not found so is a username error
-          console.log('auth/authInit/determineAuthError ERROR 4: username not found.')
+          console.log(util.timestamp() + 'auth/authInit/determineAuthError ERROR 4: username not found.')
           resolve("Incorrect Username");
         }
       });

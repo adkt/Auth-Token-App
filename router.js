@@ -2,6 +2,7 @@ module.exports.init = function(app, db) {
   console.log("Starting Router");
   
   var auth = require("./auth/authInit");
+  var session = require("./auth/session.js");
   
   //require body-parser
   var bodyParser = require('body-parser');
@@ -10,9 +11,11 @@ module.exports.init = function(app, db) {
   
   app.post('/login', function (request, response) {
     auth.init(db, request.body.user, request.body.pass).then(result => {
-      console.log("promise: " + result);
-    }).catch(err => {
-      console.log("promise: " + err);
+      // Login was successful now generate Session
+      session.getSession(db, request.body.user);
+      response.send("Result: " + result);
+    }).catch(error => {
+      response.send("Result: " + error);
     });
   });
   
