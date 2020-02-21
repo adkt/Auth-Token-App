@@ -9,14 +9,23 @@ module.exports.init = function(app, db) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   
-  app.post('/login', function (request, response) {
-    auth.init(db, request.body.user, request.body.pass).then(result => {
+  app.post('/login', async function (request, response) {
+    try {
+      // Login
+      await auth.init(db, request.body.user, request.body.pass);
+      
+      /*
+      // Generate keys
+      var keys = await session.initKeys();
+      console.log(keys);
+      */
+      
       // Login was successful now generate Session
-      session.getSession(db, request.body.user);
+      var result = await session.initSession(db, request.body.user);
       response.send("Result: " + result);
-    }).catch(error => {
+    } catch (error) {
       response.send("Result: " + error);
-    });
+    };
   });
   
   

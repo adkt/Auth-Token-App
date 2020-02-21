@@ -1,11 +1,12 @@
 var util = require("../utilities");
-var curve = require("./curve25519");
+var keys = require("./keys");
 
-module.exports.getSession = function(db, user) {
-  var keys; 
-  curve.generateKeys().then( result => {
-    keys = result;
-    console.log("Private: " + keys.privateKey);
-    console.log("Public: " + keys.publicKey);
-  });
+module.exports.initKeys = async function() {
+  var keysGenerated = await keys.makeKeys();
+  return keysGenerated;
+}
+
+module.exports.initSession = async function(db, user) {
+  var sessionID = await keys.makeSession();
+  console.log(sessionID);
 }

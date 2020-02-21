@@ -27,3 +27,27 @@ module.exports.generateKeys = function() {
   });
 }
 
+module.exports.generateBuffer = function(size) {
+  return new Promise(resolve => {
+    var sodium;
+    resolve(generateRandomHex(size));
+    async function generateRandomHex(bufferSize) {
+      if (!sodium) sodium = await SodiumPlus.auto();
+      var buffer = await sodium.randombytes_buf(bufferSize);
+      return buffer.toString('hex');
+    }
+  })
+}
+
+// generates Interger from 0 to (max-1)
+module.exports.generateInt = function(max) {
+  return new Promise(resolve => {
+    var sodium;
+    resolve(generateRandomInt(max));
+    async function generateRandomInt(maxInteger) {
+      if (!sodium) sodium = await SodiumPlus.auto();
+      return await sodium.randombytes_uniform(maxInteger);
+    }
+  })
+}
+

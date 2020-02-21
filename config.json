@@ -1,0 +1,10 @@
+{
+  "session":{
+    "timeout":{
+      "minutes": 15,
+      "hours": 0,
+      "days": 0
+    },
+    "idBufferSize": 32
+  }
+}
