@@ -1,6 +1,6 @@
 var util = require("../utilities");
 
-const { SodiumPlus } = require('sodium-plus');
+var { SodiumPlus } = require('sodium-plus');
 
 module.exports.generateKeys = function() {
   return new Promise(resolve => {

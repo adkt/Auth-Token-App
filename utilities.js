@@ -1,5 +1,7 @@
+var dayjs = require('dayjs')
+
 module.exports.timestamp = function() {
-  return 'LOG::' + new Date().toLocaleDateString() + " " + new Date().toTimeString() + " ";
+  return 'LOG::' + dayjs().toISOString() + " ";
 }
 
 module.exports.test = function() {

@@ -19,3 +19,14 @@ module.exports.init = function() {
   return db;
 };
 
+module.exports.find = async function(db, oTarget, oQuery) {
+  return new Promise((resolve, reject) => {
+    db.find(oTarget, oQuery, function (err, docs) {
+      if(!err) {
+        resolve(docs);
+      } else {
+        reject(err);
+      }
+    });  
+  });
+}

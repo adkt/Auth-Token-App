@@ -14,4 +14,4 @@ To do:
 ------
 - Limit incorrect password attempts to 10, then an email to the Admin is required.
 - bCrypt hash Passwords in the database
-- configure nodes Crypto API to use Assymetrical encryption so a public key can be used by the client to encrypt a user's local data. 
+

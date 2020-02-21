@@ -1,6 +1,7 @@
 dependencies:
   bcrypt: 3.0.8
   body-parser: 1.19.0
+  dayjs: 1.8.20
   express: 4.17.1
   nedb: 1.8.0
   sodium-plus: 0.6.0
@@ -162,6 +163,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  /dayjs/1.8.20:
+    dev: false
+    resolution:
+      integrity: sha512-mH0MCDxw6UCGJYxVN78h8ugWycZAO8thkj3bW6vApL5tS0hQplIDdAQcmbvl7n35H0AKdCJQaArTrIQw2xt4Qg==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -948,6 +953,7 @@ shrinkwrapVersion: 3
 specifiers:
   bcrypt: 3.0.8
   body-parser: 1.19.0
+  dayjs: 1.8.20
   express: 4.17.1
   nedb: 1.8.0
   sodium-plus: 0.6.0
