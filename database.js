@@ -3,7 +3,6 @@ module.exports.init = function() {
   //Create Database
   var Datastore = require('nedb')
   var db = new Datastore({ filename: '.data/data.db', autoload: true });
-
   var databaseEntry = {user: "user1", pass: "password"};
   
 /*
@@ -16,10 +15,6 @@ module.exports.init = function() {
     }
   });
 */
-  
-  db.find({user: 'user'}, function (err, docs) {
-    
-  });
   
   return db;
 };
